@@ -1,6 +1,14 @@
+:root {
+  --bg-primary: #202124;
+  --bg-secondary: #272822;
+  --text-color: white;
+  --text-secondary: #ddd;
+  --border-color: #333;
+}
+
 body {
-  color: white;
-  background-color: #202124;
+  color: var(--text-color);
+  background-color: var(--bg-primary);
 }
 
 ::-moz-selection {
@@ -68,8 +76,9 @@ h6::before {
 }
 
 .toc {
-  background-color: #272822;
-  color: white;
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  max-width: 300px;
 }
 
 a {
@@ -189,4 +198,12 @@ a:hover {
   border-width: 3px;
   border-style: solid;
   border-color: #ffd700;
+}
+
+.content {
+  max-width: 1200px;
+}
+
+.post-content {
+  max-width: 900px;
 }

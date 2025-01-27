@@ -4,10 +4,24 @@
     <div class="post-container">
       <!-- Main Content -->
       <div class="post-content">
-        <div class="title">
-          <h1 class="title">{{ .Title }}</h1>
-          <div class="meta">Posted on {{ dateFormat ":date_medium" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
-        </div>
+        <header class="post-header">
+          <h1 class="post-title">{{ .Title }}</h1>
+          <div class="post-meta">
+            {{ if .Date }}
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+            {{ end }}
+            <span class="post-views">
+              阅读量 <span id="busuanzi_value_page_pv"></span>
+            </span>
+            {{ with .Params.tags }}
+            <div class="tags">
+              {{ range . }}
+              <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a>
+              {{ end }}
+            </div>
+            {{ end }}
+          </div>
+        </header>
         {{ if isset .Params "tldr" }}
         <div class="tldr">
           <strong>tl;dr:</strong>
@@ -29,6 +43,7 @@
           {{ end }}
           {{ end }}
         </div>
+        {{ partial "post-copyright.html" . }}
       </div>
 
       <!-- TOC -->
